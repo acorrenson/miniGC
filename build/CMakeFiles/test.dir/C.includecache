@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/arthur/Documents/github/miniGC/src/gc.c
+vm.h
+/Users/arthur/Documents/github/miniGC/src/vm.h
+stdio.h
+-
+stdlib.h
+-
+
+/Users/arthur/Documents/github/miniGC/src/test.c
+vm.h
+/Users/arthur/Documents/github/miniGC/src/vm.h
+stdio.h
+-
+
+/Users/arthur/Documents/github/miniGC/src/vm.h
+stdbool.h
+-
+

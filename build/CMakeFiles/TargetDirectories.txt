@@ -1,0 +1,3 @@
+/Users/arthur/Documents/github/miniGC/build/CMakeFiles/rebuild_cache.dir
+/Users/arthur/Documents/github/miniGC/build/CMakeFiles/edit_cache.dir
+/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir
