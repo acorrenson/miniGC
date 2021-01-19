@@ -9,7 +9,7 @@
  * @brief Types of objects manipulated by the VM
  *
  */
-typedef enum { OBJ_INT, OBJ_PAIR } t_Object;
+typedef enum { OBJ_INT, OBJ_PAIR, OBJ_STRUCT } t_object;
 
 /**
  * @brief Object values
@@ -17,7 +17,7 @@ typedef enum { OBJ_INT, OBJ_PAIR } t_Object;
  */
 typedef struct s_object {
   bool marked;
-  t_Object type;
+  t_object type;
   struct s_object *next;
   union {
     int value;
@@ -42,7 +42,7 @@ typedef struct {
 
 VM *new_VM(unsigned int gc_thresh);
 
-Object *new_object(VM *vm, t_Object type);
+Object *new_object(VM *vm, t_object type);
 
 void push(VM *vm, Object *value);
 
@@ -51,5 +51,11 @@ Object *pop(VM *vm);
 void push_int(VM *vm, int int_value);
 
 Object *push_pair(VM *vm);
+
+void vsum(VM *vm);
+
+void debug_object(Object *obj);
+
+void debug(VM *vm);
 
 #endif

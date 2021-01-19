@@ -27,7 +27,7 @@ VM *new_VM(unsigned int gc_thresh) {
  * @param type
  * @return Object*
  */
-Object *new_object(VM *vm, t_Object type) {
+Object *new_object(VM *vm, t_object type) {
   if (vm->num_objects >= vm->max_objects)
     gc(vm);
 
@@ -92,11 +92,24 @@ Object *push_pair(VM *vm) {
   return obj;
 }
 
+void vsum(VM *vm) {
+  Object *v1 = pop(vm);
+  Object *v2 = pop(vm);
+  push_int(vm, v1->left->value + v2->left->value);
+  push_int(vm, v1->right->value + v2->right->value);
+  push_pair(vm);
+}
+
 void debug_object(Object *obj) {
   if (obj->type == OBJ_INT) {
     fprintf(stderr, "obj @ %p is Int(%d)\n", obj, obj->value);
   } else {
-    fprintf(stderr, "obj @ %p is Pair(%p, %p)\n", obj, obj->left, obj->right);
+    if (obj->left->type == OBJ_INT && obj->right->type == OBJ_INT) {
+      fprintf(stderr, "obj @ %p is Pair(%d, %d)\n", obj, obj->left->value,
+              obj->right->value);
+    } else {
+      fprintf(stderr, "obj @ %p is Pair(%p, %p)\n", obj, obj->left, obj->right);
+    }
   }
 }
 
