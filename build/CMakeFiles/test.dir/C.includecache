@@ -6,18 +6,12 @@
 
 #IncludeRegexTransform: 
 
-/Users/arthur/Documents/github/miniGC/src/gc.c
+/Users/arthur/Documents/github/miniGC/src/vm.c
 vm.h
 /Users/arthur/Documents/github/miniGC/src/vm.h
 stdio.h
 -
 stdlib.h
--
-
-/Users/arthur/Documents/github/miniGC/src/test.c
-vm.h
-/Users/arthur/Documents/github/miniGC/src/vm.h
-stdio.h
 -
 
 /Users/arthur/Documents/github/miniGC/src/vm.h

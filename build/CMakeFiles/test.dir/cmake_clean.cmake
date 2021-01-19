@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test.dir/gc.c.o"
+  "CMakeFiles/test.dir/parser.c.o"
   "CMakeFiles/test.dir/test.c.o"
+  "CMakeFiles/test.dir/utils.c.o"
   "CMakeFiles/test.dir/vm.c.o"
   "test"
   "test.pdb"

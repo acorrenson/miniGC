@@ -4,8 +4,16 @@
 CMakeFiles/test.dir/gc.c.o: /Users/arthur/Documents/github/miniGC/src/gc.c
 CMakeFiles/test.dir/gc.c.o: /Users/arthur/Documents/github/miniGC/src/vm.h
 
+CMakeFiles/test.dir/parser.c.o: /Users/arthur/Documents/github/miniGC/src/parser.c
+CMakeFiles/test.dir/parser.c.o: /Users/arthur/Documents/github/miniGC/src/parser.h
+
+CMakeFiles/test.dir/test.c.o: /Users/arthur/Documents/github/miniGC/src/parser.h
 CMakeFiles/test.dir/test.c.o: /Users/arthur/Documents/github/miniGC/src/test.c
 CMakeFiles/test.dir/test.c.o: /Users/arthur/Documents/github/miniGC/src/vm.h
+
+CMakeFiles/test.dir/utils.c.o: /Users/arthur/Documents/github/miniGC/src/utils.c
+CMakeFiles/test.dir/utils.c.o: /Users/arthur/Documents/github/miniGC/src/utils.h
+CMakeFiles/test.dir/utils.c.o: /Users/arthur/Documents/github/miniGC/src/vm.h
 
 CMakeFiles/test.dir/vm.c.o: /Users/arthur/Documents/github/miniGC/src/vm.c
 CMakeFiles/test.dir/vm.c.o: /Users/arthur/Documents/github/miniGC/src/vm.h

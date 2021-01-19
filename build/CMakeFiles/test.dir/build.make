@@ -76,9 +76,35 @@ include CMakeFiles/test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test.dir/flags.make
 
+CMakeFiles/test.dir/parser.c.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/parser.c.o: /Users/arthur/Documents/github/miniGC/src/parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.dir/parser.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/parser.c.o -c /Users/arthur/Documents/github/miniGC/src/parser.c
+
+CMakeFiles/test.dir/parser.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/parser.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/arthur/Documents/github/miniGC/src/parser.c > CMakeFiles/test.dir/parser.c.i
+
+CMakeFiles/test.dir/parser.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/parser.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/arthur/Documents/github/miniGC/src/parser.c -o CMakeFiles/test.dir/parser.c.s
+
+CMakeFiles/test.dir/utils.c.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/utils.c.o: /Users/arthur/Documents/github/miniGC/src/utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test.dir/utils.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/utils.c.o -c /Users/arthur/Documents/github/miniGC/src/utils.c
+
+CMakeFiles/test.dir/utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.dir/utils.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/arthur/Documents/github/miniGC/src/utils.c > CMakeFiles/test.dir/utils.c.i
+
+CMakeFiles/test.dir/utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.dir/utils.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/arthur/Documents/github/miniGC/src/utils.c -o CMakeFiles/test.dir/utils.c.s
+
 CMakeFiles/test.dir/gc.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/gc.c.o: /Users/arthur/Documents/github/miniGC/src/gc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.dir/gc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test.dir/gc.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/gc.c.o -c /Users/arthur/Documents/github/miniGC/src/gc.c
 
 CMakeFiles/test.dir/gc.c.i: cmake_force
@@ -91,7 +117,7 @@ CMakeFiles/test.dir/gc.c.s: cmake_force
 
 CMakeFiles/test.dir/vm.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/vm.c.o: /Users/arthur/Documents/github/miniGC/src/vm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/test.dir/vm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/test.dir/vm.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/vm.c.o -c /Users/arthur/Documents/github/miniGC/src/vm.c
 
 CMakeFiles/test.dir/vm.c.i: cmake_force
@@ -104,7 +130,7 @@ CMakeFiles/test.dir/vm.c.s: cmake_force
 
 CMakeFiles/test.dir/test.c.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/test.c.o: /Users/arthur/Documents/github/miniGC/src/test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/test.dir/test.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test.dir/test.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.dir/test.c.o -c /Users/arthur/Documents/github/miniGC/src/test.c
 
 CMakeFiles/test.dir/test.c.i: cmake_force
@@ -117,6 +143,8 @@ CMakeFiles/test.dir/test.c.s: cmake_force
 
 # Object files for target test
 test_OBJECTS = \
+"CMakeFiles/test.dir/parser.c.o" \
+"CMakeFiles/test.dir/utils.c.o" \
 "CMakeFiles/test.dir/gc.c.o" \
 "CMakeFiles/test.dir/vm.c.o" \
 "CMakeFiles/test.dir/test.c.o"
@@ -124,12 +152,14 @@ test_OBJECTS = \
 # External object files for target test
 test_EXTERNAL_OBJECTS =
 
+test: CMakeFiles/test.dir/parser.c.o
+test: CMakeFiles/test.dir/utils.c.o
 test: CMakeFiles/test.dir/gc.c.o
 test: CMakeFiles/test.dir/vm.c.o
 test: CMakeFiles/test.dir/test.c.o
 test: CMakeFiles/test.dir/build.make
 test: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/arthur/Documents/github/miniGC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -5,7 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/arthur/Documents/github/miniGC/src/gc.c" "/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir/gc.c.o"
+  "/Users/arthur/Documents/github/miniGC/src/parser.c" "/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir/parser.c.o"
   "/Users/arthur/Documents/github/miniGC/src/test.c" "/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir/test.c.o"
+  "/Users/arthur/Documents/github/miniGC/src/utils.c" "/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir/utils.c.o"
   "/Users/arthur/Documents/github/miniGC/src/vm.c" "/Users/arthur/Documents/github/miniGC/build/CMakeFiles/test.dir/vm.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
