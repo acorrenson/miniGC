@@ -9,7 +9,7 @@
  * @brief Types of objects manipulated by the VM
  *
  */
-typedef enum { OBJ_INT, OBJ_PAIR, OBJ_STRUCT } t_object;
+typedef enum { OBJ_INT, OBJ_PAIR } t_object;
 
 /**
  * @brief Object values
@@ -37,10 +37,15 @@ typedef struct {
   unsigned int stack_size;
   unsigned int num_objects;
   unsigned int max_objects;
+  bool gc_on;
   Object *first_object;
 } VM;
 
 VM *new_VM(unsigned int gc_thresh);
+
+void vm_gc_off(VM *vm);
+
+void vm_gc_on(VM *vm);
 
 Object *new_object(VM *vm, t_object type);
 

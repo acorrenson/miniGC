@@ -25,16 +25,17 @@ void sweep(VM *vm) {
       fprintf(stderr, "GC : sweeping object @ %p\n", *object, (*object)->value);
       Object *unreached = *object;
       *object = unreached->next;
+      vm->num_objects--;
       free(unreached);
     } else {
       (*object)->marked = false;
       object = &(*object)->next;
-      vm->num_objects--;
     }
   }
 }
 
 void gc(VM *vm) {
+  // fprintf(stderr, "GC : Trigger\n");
   mark_all(vm);
   sweep(vm);
 }

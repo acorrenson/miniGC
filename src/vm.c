@@ -17,6 +17,7 @@ VM *new_VM(unsigned int gc_thresh) {
   vm->num_objects = 0;
   vm->max_objects = gc_thresh;
   vm->first_object = NULL;
+  vm->gc_on = true;
   return vm;
 }
 
@@ -28,7 +29,7 @@ VM *new_VM(unsigned int gc_thresh) {
  * @return Object*
  */
 Object *new_object(VM *vm, t_object type) {
-  if (vm->num_objects >= vm->max_objects)
+  if (vm->num_objects >= vm->max_objects && vm->gc_on)
     gc(vm);
 
   Object *object = malloc(sizeof(Object));
@@ -40,6 +41,10 @@ Object *new_object(VM *vm, t_object type) {
 
   return object;
 }
+
+void vm_gc_off(VM *vm) { vm->gc_on = false; }
+
+void vm_gc_on(VM *vm) { vm->gc_on = true; }
 
 /**
  * @brief Push a value on the stack
@@ -95,15 +100,22 @@ Object *push_pair(VM *vm) {
 void vsum(VM *vm) {
   Object *v1 = pop(vm);
   Object *v2 = pop(vm);
+  vm_gc_off(vm);
+  if (v1->type != OBJ_PAIR || v2->type != OBJ_PAIR) {
+    fail("Dynamic type error, trying to perform vectorial sum on non vector "
+         "objects");
+    // TODO : check that v1 & v2 contains integers
+  }
   push_int(vm, v1->left->value + v2->left->value);
   push_int(vm, v1->right->value + v2->right->value);
+  vm_gc_on(vm);
   push_pair(vm);
 }
 
 void debug_object(Object *obj) {
   if (obj->type == OBJ_INT) {
     fprintf(stderr, "obj @ %p is Int(%d)\n", obj, obj->value);
-  } else {
+  } else if (obj->type == OBJ_PAIR) {
     if (obj->left->type == OBJ_INT && obj->right->type == OBJ_INT) {
       fprintf(stderr, "obj @ %p is Pair(%d, %d)\n", obj, obj->left->value,
               obj->right->value);

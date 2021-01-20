@@ -1,1 +1,0 @@
-/usr/bin/clang -Wall -Wextra -Wreturn-type -Werror=return-type -Wunreachable-code -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/test.dir/parser.c.o CMakeFiles/test.dir/utils.c.o CMakeFiles/test.dir/gc.c.o CMakeFiles/test.dir/vm.c.o CMakeFiles/test.dir/test.c.o -o test 

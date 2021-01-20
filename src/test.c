@@ -4,7 +4,8 @@
 
 int main() {
   printf("Hello GC !\n");
-  VM *vm = new_VM(12);
+  VM *vm = new_VM(1);
+
   // push_int(vm, 0);
   // push_int(vm, 1);
   // push_int(vm, 2);
