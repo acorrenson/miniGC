@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/Users/arthur/Documents/github/miniGC/src/parser.h
+stdbool.h
+-
+stdio.h
+-
+
+/Users/arthur/Documents/github/miniGC/src/test.c
+parser.h
+/Users/arthur/Documents/github/miniGC/src/parser.h
+vm.h
+/Users/arthur/Documents/github/miniGC/src/vm.h
+stdio.h
+-
+
 /Users/arthur/Documents/github/miniGC/src/vm.c
 vm.h
 /Users/arthur/Documents/github/miniGC/src/vm.h
