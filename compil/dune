@@ -1,0 +1,4 @@
+(executable
+  (name compil)
+  (libraries opal)
+  (preprocess (pps ppx_deriving.show)))

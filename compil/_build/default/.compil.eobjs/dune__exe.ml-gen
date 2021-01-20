@@ -1,0 +1,8 @@
+(** @canonical Dune__exe.Ast *)
+module Ast = Dune__exe__Ast
+
+(** @canonical Dune__exe.Compil *)
+module Compil = Dune__exe__Compil
+
+(** @canonical Dune__exe.Parser *)
+module Parser = Dune__exe__Parser

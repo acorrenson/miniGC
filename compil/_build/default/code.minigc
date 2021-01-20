@@ -1,0 +1,7 @@
+Push_int 1
+Push_int 2
+Push_vec
+Push_int 3
+Push_int 4
+Push_vec
+Push_vsum
