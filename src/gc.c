@@ -5,7 +5,6 @@
 void mark(Object *object) {
   if (object->marked)
     return;
-  // fprintf(stderr, "GC : marking object @ %p\n", object);
   object->marked = true;
   if (object->type == OBJ_PAIR) {
     mark(object->left);
@@ -35,7 +34,6 @@ void sweep(VM *vm) {
 }
 
 void gc(VM *vm) {
-  // fprintf(stderr, "GC : Trigger\n");
   mark_all(vm);
   sweep(vm);
 }

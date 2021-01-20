@@ -111,8 +111,18 @@ Object *push_pair(VM *vm);
  */
 void vsum(VM *vm);
 
+/**
+ * @brief Print informations about an object
+ *
+ * @param obj
+ */
 void debug_object(Object *obj);
 
+/**
+ * @brief Print informations about the current VM state
+ *
+ * @param obj
+ */
 void debug(VM *vm);
 
 #endif

@@ -6,18 +6,6 @@ int main() {
   printf("Hello GC !\n");
   VM *vm = new_VM(1);
 
-  // push_int(vm, 0);
-  // push_int(vm, 1);
-  // push_int(vm, 2);
-  // push_int(vm, 3);
-  // push_pair(vm);
-  // pop(vm);
-  // push_int(vm, 4);
-  // push_int(vm, 5);
-  // debug(vm);
-  // push_int(vm, 6);
-  // debug(vm);
-
   FILE *f = fopen("../compil/code.minigc", "r");
 
   if (f == NULL) {
