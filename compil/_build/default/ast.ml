@@ -35,3 +35,7 @@ type stmt =
   | S_while of cond * stmt list
   | S_affect of int * value
 [@@deriving show]
+
+type definition =
+  | D_Class of string * (type_expr * string) list
+  | D_Main of type_expr * stmt list

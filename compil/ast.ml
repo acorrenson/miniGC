@@ -37,5 +37,5 @@ type stmt =
 [@@deriving show]
 
 type definition =
-  | D_Class of string * type_expr list
-  | D_Main of type_expr * stmt list
+  | D_Class of string * (type_expr * string) list
+  | D_Main of (type_expr * string) list * stmt list

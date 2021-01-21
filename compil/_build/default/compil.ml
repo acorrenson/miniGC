@@ -60,5 +60,6 @@
 
 (* let main () =
    LazyStream.of_string "pair<pair<int,int>,int>" |> parse_type_expr *)
+
 let main =
   Ast.TInt |> Ast.show_type_expr |> print_endline

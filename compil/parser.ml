@@ -88,6 +88,38 @@ and parse_diff inp =
   in
   inner inp
 
+let parse_attribute =
+  let* _ = token "private" << spaces in
+  let* ty = parse_type_expr in
+  let* var = ident << spaces in
+  return (ty, var)
+
+
+let rec parse_definition inp =
+  choice [parse_class; parse_main] inp
+
+and parse_class inp =
+  let inner =
+    let* _ = token "class" << spaces in
+    let* name = ident in
+    let* _ = exactly '{' << spaces in
+    let* attributes = sep_by parse_attribute (exactly ';') in
+    let* _ = exactly '}' << spaces in
+    return (D_Class (name, attributes))
+  in
+  inner inp
+
+and parse_main inp =
+  let inner =
+    let* _ = token "class" << spaces in
+    let* _ = token "Main" in
+    let* _ = exactly '{' << spaces in
+    let* attributes = sep_by parse_attribute (exactly ';') in
+    let* _ = exactly '}' << spaces in
+    return (D_Main (name, attributes))
+  in
+  inner inp
+
 (**
     class MaClass {
       private int x1;
