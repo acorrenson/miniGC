@@ -9,7 +9,7 @@
  * @brief Types of objects manipulated by the VM
  *
  */
-typedef enum { OBJ_INT, OBJ_PAIR } t_object;
+typedef enum { OBJ_INT, OBJ_PAIR, OBJ_CLASS } t_object;
 
 /**
  * @brief Object values
@@ -19,8 +19,14 @@ typedef struct s_object {
   bool marked;
   t_object type;
   struct s_object *next;
+  // Instance of ? (if class instance)
+  char *class;
+  // Number of local variables (if class instance)
+  int num_locals;
   union {
     int value;
+    // Local variables (if class instance)
+    struct s_object **locals;
     struct {
       struct s_object *left;
       struct s_object *right;
@@ -95,6 +101,8 @@ Object *pop(VM *vm);
  * @param int_value
  */
 void push_int(VM *vm, int int_value);
+
+Object *push_instance(VM *vm, int num_params, const char *class_name);
 
 /**
  * @brief Pop 2 values from the stack, make a pair out of them and push it back

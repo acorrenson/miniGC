@@ -61,6 +61,17 @@ Object *push_pair(VM *vm) {
   return obj;
 }
 
+Object *push_instance(VM *vm, int num_params, const char *class_name) {
+  Object *obj = new_object(vm, OBJ_CLASS);
+  obj->class = class_name;
+  obj->num_locals = num_params;
+  obj->locals = malloc(num_params * sizeof(Object *));
+  for (int i = num_params - 1; i >= 0; i--)
+    obj->locals[i] = pop(vm);
+  push(vm, obj);
+  return obj;
+}
+
 void vsum(VM *vm) {
   Object *v1 = pop(vm);
   Object *v2 = pop(vm);
@@ -85,6 +96,15 @@ void debug_object(Object *obj) {
               obj->right->value);
     } else {
       fprintf(stderr, "obj @ %p is Pair(%p, %p)\n", obj, obj->left, obj->right);
+    }
+  } else if (obj->type == OBJ_CLASS) {
+    if (obj->num_locals > 0) {
+      fprintf(stderr, "obj @ %p is instance %s(", obj, obj->class);
+      for (int i = 0; i < obj->num_locals - 1; i++)
+        fprintf(stderr, "%p, ", obj->locals[i]);
+      fprintf(stderr, "%p)\n", obj->locals[obj->num_locals - 1]);
+    } else {
+      fprintf(stderr, "obj @ %p is instance %s()\n", obj, obj->class);
     }
   }
 }

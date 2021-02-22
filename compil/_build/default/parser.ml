@@ -88,43 +88,203 @@ and parse_diff inp =
   in
   inner inp
 
+let parse_attribute =
+  let* _ = token "private" << spaces in
+  let* ty = parse_type_expr << spaces in
+  let* var = ident << spaces in
+  return (ty, var)
+
+let rec parse_cond inp =
+  choice [parse_bool;
+          parse_le;
+          parse_lt;
+          parse_ge;
+          parse_eq;
+          parse_ne;
+          parse_gt;
+          parse_and;
+          parse_or;
+          parse_not;
+          parse_or;
+         ] inp
+
+and parse_bool inp =
+  choice [
+    token "true" => (fun _ -> C_Bool (true)) << spaces;
+    token "false" => (fun _ -> C_Bool (true)) << spaces;
+  ] inp
+
+and parse_le inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = token "<=" << spaces in
+    let* b = parse_value << spaces in
+    return (C_Le (a, b))
+  in
+  inner inp
+
+and parse_lt inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = exactly '<' << spaces in
+    let* b = parse_value << spaces in
+    return (C_Lt (a, b))
+  in
+  inner inp
+
+and parse_eq inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = token "==" << spaces in
+    let* b = parse_value << spaces in
+    return (C_Eq (a, b))
+  in
+  inner inp
+
+and parse_ne inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = token "!=" << spaces in
+    let* b = parse_value << spaces in
+    return (C_Ne (a, b))
+  in
+  inner inp
+
+and parse_gt inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = exactly '>' << spaces in
+    let* b = parse_value << spaces in
+    return (C_Gt (a, b))
+  in
+  inner inp
+
+and parse_ge inp =
+  let inner =
+    let* a = parse_value << spaces in
+    let* _ = token "<=" << spaces in
+    let* b = parse_value << spaces in
+    return (C_Gt (a, b))
+  in
+  inner inp
+
+and parse_and inp =
+  let inner =
+    let* a = parse_cond << spaces in
+    let* _ = token "&&" << spaces in
+    let* b = parse_cond << spaces in
+    return (C_And (a, b))
+  in
+  inner inp
+
+and parse_or inp =
+  let inner =
+    let* a = parse_cond << spaces in
+    let* _ = token "||" << spaces in
+    let* b = parse_cond << spaces in
+    return (C_And (a, b))
+  in
+  inner inp
+
+and parse_not inp =
+  let inner =
+    let* a = parse_cond << spaces in
+    return (C_Not a)
+  in
+  inner inp
+
+
+let rec parse_stmt inp =
+  choice [parse_if; parse_while; parse_affect] inp
+
+and parse_if inp =
+  let parse_else =
+    let* _ = token "else" << spaces in
+    let* _ = exactly '{' << spaces in
+    let* body = many (parse_stmt << spaces) in
+    let* _ = exactly '}' << spaces in
+    return body
+  in
+  let inner =
+    let* _ = token "if" << spaces in
+    let* _ = exactly '(' << spaces in
+    let* cond = parse_cond << spaces in
+    let* _ = exactly '{' << spaces in
+    let* ok = many (parse_stmt << spaces) in
+    let* _ = exactly '}' << spaces in
+    let* ko = parse_else in
+    return (S_if (cond, ok, ko))
+  in
+  inner inp
+
+and parse_while inp =
+  let inner =
+    let* _ = token "while" << spaces in
+    let* _ = exactly '(' << spaces in
+    let* cond = parse_cond << spaces in
+    let* _ = exactly '{' << spaces in
+    let* ok = many (parse_stmt << spaces) in
+    let* _ = exactly '}' << spaces in
+    return (S_while (cond, ok))
+  in
+  inner inp
+
+and parse_affect inp =
+  let inner =
+    let* x = ident << spaces in
+    let* _ = exactly '=' << spaces in
+    let* v = parse_value << spaces in
+    let* _ = exactly ';' << spaces in
+    return (S_affect (x, v))
+  in
+  inner inp
+
+
+
 let rec parse_definition inp =
   choice [parse_class; parse_main] inp
 
 and parse_class inp =
-
-  let attribute =
-    let* _ = token "private" << spaces in
-    let* ty = parse_type_expr in
-    let* var = ident << spaces in
-    return (ty, var)
-  in
-
   let inner =
     let* _ = token "class" << spaces in
     let* name = ident in
     let* _ = exactly '{' << spaces in
-    let* attributes = sep_by attribute (exactly ';') in
+    let* attributes = sep_by parse_attribute (exactly ';') in
     let* _ = exactly '}' << spaces in
     return (D_Class (name, attributes))
   in
   inner inp
 
 and parse_main inp =
+  let inner =
+    let* _ = token "class" << spaces in
+    let* _ = token "Main" << spaces in
+    let* _ = exactly '{' << spaces in
+    let* attributes = sep_by parse_attribute (exactly ';' << spaces) in
+    let* _ = token "main" << spaces in
+    let* _ = exactly '(' << spaces in
+    let* _ = exactly ')' << spaces in
+    let* _ = exactly '{' << spaces in
+    let* body = many parse_stmt in
+    let* _ = exactly '}' << spaces in
+    let* _ = exactly '}' << spaces in
+    return (D_Main (attributes, body))
+  in
+  inner inp
 
-  (**
-      class MaClass {
-        private int x1;
-        private int x2;
-        private int x3;
+(**
+    class MaClass {
+      private int x1;
+      private int x2;
+      private int x3;
+    }
+
+    class Main {
+      private MaClasse x1;
+
+      void main() {
+        x1 = new MaClass(1, 2, 3);
+        print(x1);
       }
-
-      class Main {
-        private MaClasse x1;
-
-        void main() {
-          x1 = new MaClass(1, 2, 3);
-          print(x1);
-        }
-      }
-  *)
+    }
+*)

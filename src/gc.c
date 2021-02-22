@@ -9,6 +9,9 @@ void mark(Object *object) {
   if (object->type == OBJ_PAIR) {
     mark(object->left);
     mark(object->right);
+  } else if (object->type == OBJ_CLASS) {
+    for (int i = 0; i < object->num_locals; i++)
+      mark(object->locals[i]);
   }
 }
 

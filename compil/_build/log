@@ -1,10 +1,10 @@
-# dune build
+# dune exec ./test.exe
 # OCAMLPARAM: unset
 # Workspace root: /Users/arthur/Documents/github/miniGC/compil
-$ /usr/local/bin/nproc > /var/folders/vt/lt357z2s483cp146j8jhw8pr0000gn/T/dune342be6.output 2> /dev/null
+$ /usr/local/bin/nproc > /var/folders/vt/lt357z2s483cp146j8jhw8pr0000gn/T/dunebd7881.output 2> /dev/null
 # Auto-detected concurrency: 4
 # disable binary cache
-$ /Users/arthur/.opam/4.08.0/bin/ocamlc.opt -config > /var/folders/vt/lt357z2s483cp146j8jhw8pr0000gn/T/dune0c0fd9.output
+$ /Users/arthur/.opam/4.08.0/bin/ocamlc.opt -config > /var/folders/vt/lt357z2s483cp146j8jhw8pr0000gn/T/dune984363.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -106,7 +106,10 @@ $ /Users/arthur/.opam/4.08.0/bin/ocamlc.opt -config > /var/folders/vt/lt357z2s48
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && .ppx/0bb5094b13567c3c4e1ee33245b80e63/ppx.exe -o parser.pp.ml --impl parser.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
-> File "parser.ml", line 130, characters 4-4:
-> Error: Syntax error
-[1]
+# Workspace root: /Users/arthur/Documents/github/miniGC/compil
+$ (cd _build/default && /Users/arthur/.opam/4.08.0/bin/ocamldep.opt -modules -impl test.ml) > _build/default/.test.eobjs/test.ml.d
+$ (cd _build/default && /Users/arthur/.opam/4.08.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .test.eobjs/byte -I /Users/arthur/.opam/4.08.0/lib/opal -I /Users/arthur/.opam/4.08.0/lib/ppx_deriving/runtime -I /Users/arthur/.opam/4.08.0/lib/result -I .miniGC.objs/byte -I .miniGC.objs/native -no-alias-deps -opaque -o .test.eobjs/byte/dune__exe__Test.cmo -c -impl test.ml)
+$ (cd _build/default && /Users/arthur/.opam/4.08.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .test.eobjs/byte -I .test.eobjs/native -I /Users/arthur/.opam/4.08.0/lib/opal -I /Users/arthur/.opam/4.08.0/lib/ppx_deriving/runtime -I /Users/arthur/.opam/4.08.0/lib/result -I .miniGC.objs/byte -I .miniGC.objs/native -intf-suffix .ml -no-alias-deps -opaque -o .test.eobjs/native/dune__exe__Test.cmx -c -impl test.ml)
+> File "_none_", line 1:
+> Warning 58: no cmx file was found in path for module Opal, and its interface was not compiled with -opaque
+$ (cd _build/default && /Users/arthur/.opam/4.08.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test.exe /Users/arthur/.opam/4.08.0/lib/opal/opal.cmxa /Users/arthur/.opam/4.08.0/lib/result/result.cmxa /Users/arthur/.opam/4.08.0/lib/ppx_deriving/runtime/ppx_deriving_runtime.cmxa miniGC.cmxa .test.eobjs/native/dune__exe__Test.cmx)

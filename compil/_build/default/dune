@@ -1,4 +1,11 @@
 (executable
-  (name compil)
+  (name test)
+  (libraries miniGC)
+  (modules test))
+
+(library 
+  (name miniGC)
+  (preprocess (pps ppx_deriving.show))
   (libraries opal)
-  (preprocess (pps ppx_deriving.show)))
+  (modules (:standard \ test))
+)
